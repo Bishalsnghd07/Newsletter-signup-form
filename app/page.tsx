@@ -69,9 +69,9 @@ export default function Home() {
   )}  {!formSubmitted && (
     <div className="flex">
       {isSmallerScreen ? (
-        <Image loading="lazy" src="/assets/images/illustration-sign-up-mobile.svg" alt="" width={100} height={100} className="w-full"/>
+        <Image src="/assets/images/illustration-sign-up-mobile.svg" alt="" width={100} height={100} className="w-full"/>
         ) : (
-          <Image loading="lazy" src="/assets/images/illustration-sign-up-desktop.svg" alt="" width={100} height={100} className="w-[25rem] h-[37.0625rem]"/>
+          <Image src="/assets/images/illustration-sign-up-desktop.svg" alt="" width={100} height={100} className="w-[25rem] h-[37.0625rem]"/>
           )} 
     </div>
   )}
