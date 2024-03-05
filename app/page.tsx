@@ -4,21 +4,11 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
-  const [isSmallerScreen, setIsSmallerScreen] = useState(
-    typeof window !== 'undefined' && window.innerWidth <= 1024
-  );
   const [emailError, setEmailError] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [emailValue, setEmailValue] = useState('')
 
-  const handleResize = () => {
-    setIsSmallerScreen(window.innerWidth <= 1024);
-  };
-  if (typeof window !== 'undefined') {
-    window.addEventListener("resize", handleResize);
-  }
-  
   const validateEmail = (email: string) => {
     const re = /\S+@\S+\.\S+/;
     return re.test(email)
@@ -55,7 +45,6 @@ export default function Home() {
         <ListItem>Measuring to ensure updates are a success</ListItem>
         <ListItem>And much more!</ListItem>
 
-
         <form className="w-full pl-[1.1rem] lg:pl-0 pr-[1.1rem] lg:pr-0 pt-[2rem] mx-auto" onSubmit={handleSubmit} noValidate>
   <div className="mb-5">
     <label htmlFor="email" className="flex mb-2 text-[0.8rem] text-left font-bold justify-between text-gray-900">Email Address
@@ -68,15 +57,21 @@ export default function Home() {
       </div>
   )}  {!formSubmitted && (
     <div className="flex">
-      {isSmallerScreen ? (
-        <Image src="/assets/images/illustration-sign-up-mobile.svg" alt="" width={100} height={100} className="w-full"/>
-        ) : (
-          <Image src="/assets/images/illustration-sign-up-desktop.svg" alt="" width={100} height={100} className="w-[25rem] h-[37.0625rem]"/>
-          )} 
+      <Image 
+        src="/assets/images/illustration-sign-up-mobile.svg" 
+        alt="" 
+        width={24} 
+        height={24} 
+        className="block lg:hidden w-full filter saturate-100"/>
+      <Image 
+        src="/assets/images/illustration-sign-up-desktop.svg" 
+        alt="" 
+        width={100} 
+        height={100} 
+        className="hidden lg:block w-[25rem] h-[37.0625rem] filter saturate-100"/>
     </div>
   )}
       {formSubmitted && (
-
         <div className={`tracking-tight flex flex-col h-screen justify-between lg:h-auto p-8 lg:max-w-[28rem]`}>
           <div className="my-[8rem] lg:my-0">
          <Image src="/assets/images/icon-success.svg" alt="" width={50} height={50} className="pb-4 lg:pb-0"/>
