@@ -15,7 +15,9 @@ export default function Home() {
   const handleResize = () => {
     setIsSmallerScreen(window.innerWidth <= 1024);
   };
-  window.addEventListener("resize", handleResize);
+  if (typeof window !== 'undefined') {
+    window.addEventListener("resize", handleResize);
+  }
   
   const validateEmail = (email: string) => {
     const re = /\S+@\S+\.\S+/;
