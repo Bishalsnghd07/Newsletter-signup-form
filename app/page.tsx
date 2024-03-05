@@ -36,11 +36,11 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen items-center justify-center gap-10 overflow-hidden bg-gray-400">
-     <div className="flex flex-col-reverse lg:flex-row lg:gap-5 bg-white lg:p-6 lg:rounded-3xl">
+     <div className="flex flex-col-reverse lg:flex-row bg-white lg:p-6 lg:gap-5 lg:rounded-3xl">
         {!formSubmitted && (
       <div className="flex flex-col lg:px-[2.6rem] justify-start py-[2rem] lg:py-[4.55rem] lg:max-w-[28.8rem]">
         <h1 className="font-bold text-5xl lg:text-[3.5rem] text-slate-800 pl-4 lg:pl-0">Stay updated!</h1>
-        <p className="text-gray-700 font-medium text-base pl-4 lg:pl-0 py-4 lg:py-6 leading-[1.48rem]">Join 60,000+ product managers receiving monthly updates on:</p>
+        <p className="text-gray-700 font-medium text-base px-4 lg:px-0 py-4 lg:py-6 leading-[1.48rem]">Join 60,000+ product managers receiving monthly updates on:</p>
         <ListItem>Product discovery and building what matters</ListItem>
         <ListItem>Measuring to ensure updates are a success</ListItem>
         <ListItem>And much more!</ListItem>
