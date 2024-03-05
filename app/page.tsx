@@ -1,11 +1,11 @@
-"use client";
+"use client"
 import ListItem from "@/components/ListItem";
 import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
   const [isSmallerScreen, setIsSmallerScreen] = useState(
-    window.innerWidth <= 1024
+    typeof window !== 'undefined' && window.innerWidth <= 1024
   );
   const [emailError, setEmailError] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -67,9 +67,9 @@ export default function Home() {
   )}  {!formSubmitted && (
     <div className="flex">
       {isSmallerScreen ? (
-        <img loading="lazy" src="/assets/images/illustration-sign-up-mobile.svg" alt="" width={100} height={100} className="w-full"/>
+        <Image loading="lazy" src="/assets/images/illustration-sign-up-mobile.svg" alt="" width={100} height={100} className="w-full"/>
         ) : (
-          <img loading="lazy" src="/assets/images/illustration-sign-up-desktop.svg" alt="" width={100} height={100} className="w-[25rem] h-[37.0625rem]"/>
+          <Image loading="lazy" src="/assets/images/illustration-sign-up-desktop.svg" alt="" width={100} height={100} className="w-[25rem] h-[37.0625rem]"/>
           )} 
     </div>
   )}
