@@ -7,7 +7,7 @@ export default function Home() {
   const [emailError, setEmailError] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
-  const [emailValue, setEmailValue] = useState('')
+  const [emailValue, setEmailValue] = useState('');
 
   const validateEmail = (email: string) => {
     const re = /\S+@\S+\.\S+/;
@@ -25,9 +25,19 @@ export default function Home() {
      setEmailValue(emailInput.value)
     } else {
       setEmailError('valid email required');
-      return
+      // return;
     }
   }
+
+  const handleInputChange = (event: { target: { value: string; }; }) => {
+    const inputValue = event.target.value;
+    const isValidEmail = validateEmail(inputValue);
+    if (isValidEmail) {
+      setEmailError('');
+    } else {
+      setEmailError('Valid email required');
+    }
+  };
 
   const thanksForm = () => {
     setFormSubmitted(false)
@@ -50,7 +60,13 @@ export default function Home() {
     <label htmlFor="email" className="flex mb-2 text-[0.8rem] text-left font-bold justify-between text-gray-900">Email Address
     {emailError && (<span className="text-sm font-semibold text-red-500">{emailError}</span>)}
     </label>
-    <input type="email" id="email" className={`bg-gray-50 border border-gray-400 text-gray-900 text-base rounded-lg block w-full px-6 p-4 ${emailError ? 'placeholder-red-500 text-red-500 border-red-500 focus:border-red-500' : ''}`} placeholder="email@company.com"/>
+    <input 
+      type="email" 
+      id="email" 
+      className={`bg-gray-50 border border-gray-400 text-base rounded-lg text-gray-900 
+focus:outline-none w-full px-6 p-4 ${emailError ? 'placeholder-red-500 text-red-500 border-red-500 focus:border-red-500' : ''}`} 
+      placeholder="email@company.com"  
+      onChange={handleInputChange}/>
   </div>
     <button type="submit" className="text-white bg-slate-800 hover:bg-red-500 font-semibold rounded-lg text-lg md:text-base w-full py-4 text-center transition duration-500 shadow-md hover:shadow-md hover:shadow-red-500 ease-linear ">Subscribe to monthly newsletter</button>
   </form>
