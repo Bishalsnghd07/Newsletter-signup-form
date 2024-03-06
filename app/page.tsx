@@ -16,9 +16,7 @@ export default function Home() {
 
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
-    const emailInput = document.getElementById('email') as HTMLInputElement;
-
-    
+    const emailInput = document.getElementById('email') as HTMLInputElement; 
     if(validateEmail(emailInput.value)) {
       setEmailError('')
       setSuccessMessage('Thanks for Signing up!')
