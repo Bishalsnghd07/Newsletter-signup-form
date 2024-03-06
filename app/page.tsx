@@ -50,7 +50,7 @@ export default function Home() {
     <label htmlFor="email" className="flex mb-2 text-[0.8rem] text-left font-bold justify-between text-gray-900">Email Address
     {emailError && (<span className="text-sm font-semibold text-red-500">{emailError}</span>)}
     </label>
-    <input type="email" id="email" className={`bg-gray-50 border border-gray-400 text-gray-900 text-base rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full px-6 p-4  dark:border-gray-600 dark:focus:ring-blue-500 dark:focus:border-blue-500 ${emailError ? 'placeholder-red-500 text-red-500' : ''}`} placeholder="email@company.com"/>
+    <input type="email" id="email" className={`bg-gray-50 border border-gray-400 text-gray-900 text-base rounded-lg block w-full px-6 p-4 ${emailError ? 'placeholder-red-500 text-red-500 border-red-500' : ''}`} placeholder="email@company.com"/>
   </div>
     <button type="submit" className="text-white bg-slate-800 hover:bg-red-500 font-semibold rounded-lg text-lg md:text-base w-full py-4 text-center transition duration-500 shadow-md hover:shadow-md hover:shadow-red-500 ease-linear ">Subscribe to monthly newsletter</button>
   </form>
