@@ -10,7 +10,7 @@ export default function Home() {
   const [emailValue, setEmailValue] = useState('');
 
   const validateEmail = (email: string) => {
-    const re = /\S+@\S+\.\S+/;
+    const re = /\S+@\S+\.com$/;
     return re.test(email)
   }
 
@@ -18,26 +18,37 @@ export default function Home() {
     e.preventDefault()
     const emailInput = document.getElementById('email') as HTMLInputElement;
 
+    
     if(validateEmail(emailInput.value)) {
-     setEmailError('')
-     setSuccessMessage('Thanks for Signing up!')
-     setFormSubmitted(true)
-     setEmailValue(emailInput.value)
-    } else {
-      setEmailError('valid email required');
-      // return;
-    }
-  }
-
-  const handleInputChange = (event: { target: { value: string; }; }) => {
-    const inputValue = event.target.value;
-    const isValidEmail = validateEmail(inputValue);
-    if (isValidEmail) {
-      setEmailError('');
+      setEmailError('')
+      setSuccessMessage('Thanks for Signing up!')
+      setFormSubmitted(true)
+      setEmailValue(emailInput.value)
     } else {
       setEmailError('Valid email required');
     }
-  };
+    const handleInputChange = () => {
+      const inputValue = emailInput.value;
+      if (validateEmail(inputValue)) {
+        setEmailError('');
+      } else {
+        setEmailError('Valid email required');
+      }
+    };
+  
+    // Attach input event listener
+    emailInput.addEventListener('input', handleInputChange);
+  }
+  
+  // const handleInputChange = (event: { target: { value: string; }; }) => {
+  //   const inputValue = event.target.value;
+  //   const isValidEmail = validateEmail(inputValue);
+  //   if (isValidEmail) {
+  //     setEmailError('');
+  //   } else {
+  //     setEmailError('Valid email required');
+  //   }
+  // };
 
   const thanksForm = () => {
     setFormSubmitted(false)
@@ -66,7 +77,8 @@ export default function Home() {
       className={`bg-gray-50 border border-gray-400 text-base rounded-lg text-gray-900 
 focus:outline-none w-full px-6 p-4 ${emailError ? 'placeholder-red-500 text-red-500 border-red-500 focus:border-red-500' : ''}`} 
       placeholder="email@company.com"  
-      onChange={handleInputChange}/>
+      />
+
   </div>
     <button type="submit" className="text-white bg-slate-800 hover:bg-red-500 font-semibold rounded-lg text-lg md:text-base w-full py-4 text-center transition duration-500 shadow-md hover:shadow-md hover:shadow-red-500 ease-linear ">Subscribe to monthly newsletter</button>
   </form>
