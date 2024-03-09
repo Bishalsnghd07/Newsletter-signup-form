@@ -4,16 +4,20 @@ import { useState } from "react";
 import Image from "next/image";
 
 export default function Home() {
+
+  // State variables for email form handling
   const [emailError, setEmailError] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
   const [emailValue, setEmailValue] = useState('');
 
+  // Function to validate email format
   const validateEmail = (email: string) => {
     const re = /\S+@\S+\.com$/;
     return re.test(email)
   }
 
+  // Function to handle form submission
   const handleSubmit = (e: { preventDefault: () => void; }) => {
     e.preventDefault()
     const emailInput = document.getElementById('email') as HTMLInputElement; 
@@ -25,6 +29,8 @@ export default function Home() {
     } else {
       setEmailError('Valid email required');
     }
+  
+    // Function to handle input change
     const handleInputChange = () => {
       const inputValue = emailInput.value;
       if (validateEmail(inputValue)) {
@@ -34,7 +40,7 @@ export default function Home() {
       }
     };
   
-    // Attach input event listener
+    // Attach input event listener for email input
     emailInput.addEventListener('input', handleInputChange);
   }
   
@@ -48,6 +54,7 @@ export default function Home() {
   //   }
   // };
 
+  // Function to handle form submission success message dismissal
   const thanksForm = () => {
     setFormSubmitted(false)
     setSuccessMessage('');
