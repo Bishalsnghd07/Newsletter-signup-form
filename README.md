@@ -2,6 +2,8 @@
 
 # Frontend Mentor - Newsletter sign-up form with success message
 
+![Design preview for the newsletter signup section coding challenge](/public/design/desktop-preview.jpg)
+
 This is a solution to the [Design preview for the Newsletter sign-up form with success message coding challenge](https://www.frontendmentor.io/solutions/responsive-newsletter-signup-form-using-tailwind-css-next-RqwSiE4mnM)
 
 **To do this challenge, need a basic understanding of HTML, CSS and JavaScript.**
